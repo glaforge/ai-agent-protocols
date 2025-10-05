@@ -1,0 +1,15 @@
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+    </root>
+
+    <logger name="com.google.adk.tools.mcp.McpTool" level="OFF"/>
+    <logger name="com.google.genai.types.Content" level="OFF"/>
+<!--    <logger name="com.google.adk.web.controller.ExecutionController" level="DEBUG"/>-->
+</configuration>

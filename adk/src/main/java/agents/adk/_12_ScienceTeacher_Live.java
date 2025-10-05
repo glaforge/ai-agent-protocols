@@ -38,10 +38,14 @@ public class _12_ScienceTeacher_Live implements AgentProvider {
             .model("gemini-2.5-flash-preview-native-audio-dialog")
             .generateContentConfig(GenerateContentConfig.builder()
                 .speechConfig(SpeechConfig.builder()
-                    .languageCode("fr-FR")
+//                    .languageCode("fr-FR")
+                    .languageCode("en-US")
                     .voiceConfig(VoiceConfig.builder()
                         .prebuiltVoiceConfig(PrebuiltVoiceConfig.builder()
-                            .voiceName("fr-FR-Chirp3-HD-Charon")
+                            // All Chirp 3 HD voices
+                            // https://cloud.google.com/text-to-speech/docs/chirp3-hd
+//                            .voiceName("fr-FR-Chirp3-HD-Charon")
+                            .voiceName("en-US-Chirp3-HD-Fenrir")
                             .build())
                         .build())
                     .build())

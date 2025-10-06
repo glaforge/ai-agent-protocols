@@ -13,7 +13,7 @@ public class ProductCampaign implements AgentProvider {
         BaseAgent marketingSpecialist = new MarketingSpecialist().getAgent();
 
         return SequentialAgent.builder()
-            .name("product_campaing")
+            .name("product_campaign")
             .description("product campaign sequence")
             .subAgents(
                 productStrategist,

@@ -54,6 +54,8 @@ The ADK allows you to compose multiple agents to solve complex problems.
 
 *   **[`_60_CapitalCity_YAML.java`](./src/main/java/agents/_60_CapitalCity_YAML.java)**: Shows how to define an agent declaratively using a YAML configuration file. This separates the agent's configuration (name, instructions, tools) from the application code.
 
+*   **[`_70_ImageEditor_NanoBanana.java`](./src/main/java/agents/adk/_70_ImageEditor_NanoBanana.java)**: An agent that can create and edit images. It showcases how to work with multimodal models that can understand and generate images, passing binary data to and from the model.
+
 ### Media & Multi-Agent Workflows
 
 This more complex scenario, located in `src/main/java/agents/media/`, combines multiple agents and protocols to simulate a product marketing campaign.

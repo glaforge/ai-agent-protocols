@@ -17,6 +17,7 @@
 package agents.adk;
 
 import agents.AgentProvider;
+import agents.util.AgentRunner;
 import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
 import com.google.adk.agents.SequentialAgent;
@@ -87,6 +88,12 @@ public class _32_TripPlanner_Sequential implements AgentProvider {
 
 
     public static void main(String[] args) {
+        System.setProperty(
+            "org.apache.tomcat.websocket.DEFAULT_BUFFER_SIZE",
+            String.valueOf(10 * 1024 * 1024)
+        );
+
         AdkWebServer.start(new _32_TripPlanner_Sequential().getAgent());
+//        AgentRunner.run(new _32_TripPlanner_Sequential().getAgent());
     }
 }

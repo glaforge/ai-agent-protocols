@@ -106,7 +106,7 @@ public class _34_CompanyDetective_Parallel implements AgentProvider {
     }
 
     public static void main(String[] args) {
-//        AdkWebServer.start(new _34_CompanyDetective_Parallel().getAgent());
-        AgentRunner.run(new _34_CompanyDetective_Parallel().getAgent());
+        AdkWebServer.start(new _34_CompanyDetective_Parallel().getAgent());
+//        AgentRunner.run(new _34_CompanyDetective_Parallel().getAgent());
     }
 }

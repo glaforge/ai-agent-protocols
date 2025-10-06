@@ -2,12 +2,16 @@ package agents.util;
 
 import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.RunConfig;
+import com.google.adk.artifacts.InMemoryArtifactService;
+import com.google.adk.artifacts.ListArtifactsResponse;
 import com.google.adk.events.Event;
-import com.google.adk.runner.InMemoryRunner;
+import com.google.adk.runner.Runner;
+import com.google.adk.sessions.InMemorySessionService;
 import com.google.adk.sessions.Session;
 import com.google.genai.types.Content;
 import com.google.genai.types.Part;
 import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Single;
 import org.reactivestreams.Subscriber;
 
 import java.nio.charset.StandardCharsets;
@@ -21,7 +25,7 @@ import static agents.util.AnsiMarkdown.*;
 public class AgentRunner {
 
     public static void run(BaseAgent agent) {
-        runWithState(agent, null);
+        runWith(agent, null, null);
     }
 
     private static void printlnEvent(Event event) {
@@ -56,8 +60,11 @@ public class AgentRunner {
         });
     }
 
-    public static void runWithState(BaseAgent agent, Map<String, Object> state) {
-        InMemoryRunner runner = new InMemoryRunner(agent);
+    public static void runWith(BaseAgent agent, Map<String, Object> state, Map<String, Object> artifacts) {
+        InMemorySessionService sessionService = new InMemorySessionService();
+        InMemoryArtifactService artifactService = new InMemoryArtifactService();
+
+        Runner runner = new Runner(agent, agent.name(), artifactService, sessionService, null, null);
 
         final String appName = runner.appName();
         final String userId = UUID.randomUUID().toString();
@@ -67,6 +74,16 @@ public class AgentRunner {
             .createSession(appName, userId,
                 state == null ? null : new ConcurrentHashMap<>(state), null)
             .blockingGet();
+
+        if (artifacts != null) {
+            artifacts.forEach((key, objectPart) -> {
+                System.out.println(bold("Saving artifact: ") + green(key));
+                runner.artifactService().saveArtifact(appName, userId, session.id(), key, (Part) objectPart)
+                    .subscribe((integer, throwable) -> {
+                        System.out.println(gray("  " + integer + "/" + throwable));
+                    });
+            });
+        }
 
         try (Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8)) {
             while (true) {

@@ -1,5 +1,6 @@
 package agents.media;
 
+import io.a2a.spec.TextPart;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
 
@@ -18,6 +19,9 @@ public class AgentExecutorProducer {
         return new AgentExecutor() {
             @Override
             public void execute(RequestContext context, EventQueue eventQueue) throws JSONRPCError {
+                System.out.println("Social media post received: ");
+                System.out.println(((TextPart)context.getMessage().getParts().getLast()).getText());
+
                 eventQueue.enqueueEvent(
                     A2A.toAgentMessage("Your social media post has been posted")
                 );

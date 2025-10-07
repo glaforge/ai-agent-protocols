@@ -26,7 +26,7 @@ import io.a2a.spec.Message;
 import io.a2a.spec.Part;
 import io.a2a.spec.TextPart;
 
-import static agents.util.AnsiMarkdown.green;
+import static agents.util.AnsiMarkdown.*;
 
 public class SocialMediaClient {
 
@@ -42,8 +42,8 @@ public class SocialMediaClient {
 
             AgentCard publicAgentCard = new A2ACardResolver(SERVER_URL).getAgentCard();
 
-            System.out.println("Agent card:");
-            System.out.println(OBJECT_MAPPER.writeValueAsString(publicAgentCard));
+            System.out.println(bold("\nAgent card:"));
+            System.out.println(gray(OBJECT_MAPPER.writeValueAsString(publicAgentCard)));
 
             final CompletableFuture<String> messageResponse = new CompletableFuture<>();
 
@@ -82,13 +82,14 @@ public class SocialMediaClient {
 
             Message message = A2A.toUserMessage(textContent); // the message ID will be automatically generated for you
 
-            System.out.println("Sending social post:\n" + green(textContent));
+            System.out.println(bold("\nSending social post:"));
+            System.out.println(bold(green(textContent)));
             client.sendMessage(message);
 
             System.out.println("Message sent successfully. Responses will be handled by the configured consumers.");
 
             String responseText = messageResponse.get();
-            System.out.println("Response:\n" + green(responseText));
+            System.out.println(bold("Response:\n") + green(responseText));
 
             return Map.of("success", responseText);
         } catch (Throwable throwable) {

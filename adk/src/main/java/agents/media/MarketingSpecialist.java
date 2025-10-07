@@ -21,6 +21,7 @@ import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
 import com.google.adk.tools.FunctionTool;
 import com.google.adk.web.AdkWebServer;
+import io.reactivex.rxjava3.core.Maybe;
 
 public class MarketingSpecialist implements AgentProvider {
     @Override
@@ -39,6 +40,10 @@ public class MarketingSpecialist implements AgentProvider {
                 Post each of these social media posts via the `post_to_social_media` tool.
                 """)
             .tools(FunctionTool.create(SocialMediaClient.class, "postSocialMedia"))
+            .afterAgentCallback(callbackContext -> {
+                callbackContext.eventActions().setTransferToAgent("product_campaign");
+                return Maybe.empty();
+            })
             .build();
     }
 

@@ -25,7 +25,7 @@ public class _10_ScienceTeacher implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
         return LlmAgent.builder()
-            .name("science-teacher")
+            .name("10-science-teacher")
             .description("A friendly science teacher")
             .instruction("""
                 You are a science teacher for teenagers.

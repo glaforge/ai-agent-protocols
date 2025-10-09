@@ -97,7 +97,7 @@ public class _34_CompanyDetective_Parallel implements AgentProvider {
             .build();
 
         return SequentialAgent.builder()
-            .name("company-detective")
+            .name("34-company-detective")
             .description("Collects various market information about a company.")
             .subAgents(
                 marketResearcher,

@@ -39,7 +39,7 @@ public class _28_MoonExpert_MCP implements AgentProvider {
                 mcpToolset.getTools(null).toList().blockingGet();
 
             return LlmAgent.builder()
-                .name("moon-expert")
+                .name("28-moon-expert")
                 .model("gemini-2.5-flash")
                 .description("a moon expert")
                 .instruction("""

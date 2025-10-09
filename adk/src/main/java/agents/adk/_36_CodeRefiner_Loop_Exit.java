@@ -89,7 +89,7 @@ public class _36_CodeRefiner_Loop_Exit implements AgentProvider {
             .build();
 
         return SequentialAgent.builder()
-            .name("code-refiner-assistant")
+            .name("36-code-refiner-assistant")
             .description("Manages the full code generation and refinement process.")
             .subAgents(
                 codeRefinerLoop,

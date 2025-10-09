@@ -1,4 +1,4 @@
-name: capital_city
+name: 60-capital-city
 model: gemini-2.5-flash
 description: A friendly geography expert
 instruction: |

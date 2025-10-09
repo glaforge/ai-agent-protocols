@@ -35,7 +35,7 @@ public class _40_WeatherForecast_Callback implements AgentProvider {
     public BaseAgent getAgent() {
 
         return LlmAgent.builder()
-            .name("weather-assistant")
+            .name("40-weather-assistant")
             .description("weather forecast assistant")
             .instruction("""
                 You are an expert meteorologist.

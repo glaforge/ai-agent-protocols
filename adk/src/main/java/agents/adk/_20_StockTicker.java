@@ -32,7 +32,7 @@ public class _20_StockTicker implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
         return LlmAgent.builder()
-            .name("stock-ticker")
+            .name("20-stock-ticker")
             .description("Stock exchange ticker expert")
             .instruction("""
                 You are a stock exchange ticker expert.

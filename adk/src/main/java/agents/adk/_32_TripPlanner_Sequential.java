@@ -73,7 +73,7 @@ public class _32_TripPlanner_Sequential implements AgentProvider {
             .build();
 
         return SequentialAgent.builder()
-            .name("trip-planner")
+            .name("32-trip-planner")
             .description("""
                 Helps you plan a trip by finding attractions,
                 creating an itinerary, and suggesting restaurants.

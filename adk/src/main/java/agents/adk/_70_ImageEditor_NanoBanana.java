@@ -38,7 +38,7 @@ public class _70_ImageEditor_NanoBanana implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
         return LlmAgent.builder()
-            .name("image-editor")
+            .name("70-image-editor")
             .description("an image editor using the nano banana image model")
             .model("gemini-2.5-flash-image")
             .instruction("""

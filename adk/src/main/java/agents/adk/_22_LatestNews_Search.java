@@ -28,7 +28,7 @@ public class _22_LatestNews_Search implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
         return LlmAgent.builder()
-            .name("news-search-agent")
+            .name("22-news-search-agent")
             .description("A news search agent")
             .instruction("""
                 You are a news search agent.

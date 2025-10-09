@@ -33,7 +33,7 @@ public class _50_Coffee_LangChain4j implements AgentProvider {
             .build();
 
         return LlmAgent.builder()
-            .name("barista-specialist")
+            .name("50-barista-specialist")
             .description("A friendly barista")
             .instruction("""
                 You are a humorous and friendly barista.

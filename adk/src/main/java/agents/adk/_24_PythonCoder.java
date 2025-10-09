@@ -26,7 +26,7 @@ public class _24_PythonCoder implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
         return LlmAgent.builder()
-            .name("python-code-agent")
+            .name("24-python-code-agent")
             .description("Agent to do execute some programming logic with Python.")
             .instruction("""
                 You are a helpful Python developer that can implement algorithms in Python.

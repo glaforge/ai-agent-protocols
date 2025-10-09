@@ -69,7 +69,7 @@ public class _30_SearchAndTweet_SubAgents implements AgentProvider {
             .build();
 
         return LlmAgent.builder()
-            .name("content-companion")
+            .name("30-content-companion")
             .description("A content companion that searches topics and crafts compelling social media stories")
             .instruction("""
                 Your role is to help bloggers and influencers come up with interesting topic ideas,

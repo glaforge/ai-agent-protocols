@@ -76,7 +76,7 @@ public class _26_LocalGuide_Maps implements AgentProvider {
             .build();
 
         return LlmAgent.builder()
-            .name("local-guide-agent")
+            .name("26-local-guide-agent")
             .description("A local guide agent")
             .instruction("""
                 You're a local tourist guide

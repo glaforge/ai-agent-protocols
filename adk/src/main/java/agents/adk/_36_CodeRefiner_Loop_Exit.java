@@ -29,7 +29,7 @@ import com.google.adk.web.AdkWebServer;
  * This code generator and refiner agent organizes the work in a loop.
  * To exit the self-improvement feedback loop,
  * and agent has to call the exit loop tool.
- *
+ * <br>
  * It's also possible to exit a loop agent inside a callback,
  * by using setEscalate() to true on the context's event actions object.
  */

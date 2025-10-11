@@ -26,7 +26,7 @@ import dev.langchain4j.model.ollama.OllamaChatModel;
 /**
  * This barista agent uses the LangChain4j integration
  * to be able to use any LLM supported by LangChain4j.
- *
+ * <br>
  * Here, the model is a local model running under Ollama.
  */
 public class _50_Coffee_LangChain4j implements AgentProvider {

@@ -27,7 +27,7 @@ import io.reactivex.rxjava3.core.Maybe;
 /**
  * A more complex agent system for content creation and social media management.
  * It demonstrates how to configure and use subagents.
- *
+ * <br>
  * The system consists of multiple specialized subagents working together:
  * <ul>
  *   <li>Google Search Agent - Performs web searches to gather information</li>
@@ -39,7 +39,7 @@ import io.reactivex.rxjava3.core.Maybe;
  * The main agent ("content-companion") features two subagents:
  * "topic-search-agent" and "social-media-agent".
  * And the "google-search-agent" is an "agent-as-tool" for the "topic-search-agent".
- *
+ * <br>
  * The two subagents use a callback to always transfer back the
  * control to the main agent when they have finished their task.
  */

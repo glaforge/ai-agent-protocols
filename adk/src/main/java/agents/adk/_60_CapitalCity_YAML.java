@@ -24,6 +24,9 @@ import com.google.adk.web.AdkWebServer;
 
 import java.nio.file.Path;
 
+/**
+ * This agent is defined inside a YAML definition file.
+ */
 public class _60_CapitalCity_YAML implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

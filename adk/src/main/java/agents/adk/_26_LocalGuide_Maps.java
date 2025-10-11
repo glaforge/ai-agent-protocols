@@ -32,6 +32,13 @@ import com.google.genai.types.Tool;
 import com.google.genai.types.ToolConfig;
 import io.reactivex.rxjava3.core.Flowable;
 
+/**
+ * This touristic local guide implements a custom Gemini model
+ * to automatically configure the LlmRequest sent to Gemini
+ * to ground answers with results from Google Maps.
+ *
+ * Note: Works only when using Gemini via Vertex AI.
+ */
 public class _26_LocalGuide_Maps implements AgentProvider {
 
     static class CustomGemini extends Gemini {

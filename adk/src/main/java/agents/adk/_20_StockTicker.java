@@ -26,6 +26,12 @@ import com.google.adk.web.AdkWebServer;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * This stock exchange ticker agent shows how to use function tools.
+ * By defining a method annotated with @Schema, with names and descriptions,
+ * the LLM is able to understand that it requests to call this tool
+ * to be able to fulfill the user's request.
+ */
 public class _20_StockTicker implements AgentProvider {
     public static final Random RANDOM = new Random();
 

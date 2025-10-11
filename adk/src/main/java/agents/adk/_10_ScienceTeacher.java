@@ -21,6 +21,10 @@ import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
 import com.google.adk.web.AdkWebServer;
 
+/**
+ * A basic single agent, with a name, description, instructions and model.
+ * This is the simplest agent you can create.
+ */
 public class _10_ScienceTeacher implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

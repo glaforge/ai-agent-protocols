@@ -23,6 +23,12 @@ import com.google.adk.models.langchain4j.LangChain4j;
 import com.google.adk.web.AdkWebServer;
 import dev.langchain4j.model.ollama.OllamaChatModel;
 
+/**
+ * This barista agent uses the LangChain4j integration
+ * to be able to use any LLM supported by LangChain4j.
+ *
+ * Here, the model is a local model running under Ollama.
+ */
 public class _50_Coffee_LangChain4j implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

@@ -30,6 +30,9 @@ import java.util.Map;
 
 import static agents.util.AnsiMarkdown.*;
 
+/**
+ * The weather forecast agent exemplifies how to define the various possible callbacks.
+ */
 public class _40_WeatherForecast_Callback implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

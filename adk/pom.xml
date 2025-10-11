@@ -17,7 +17,8 @@
         <dependency>
             <groupId>com.google.adk</groupId>
             <artifactId>google-adk</artifactId>
-            <version>${adk.version}</version>
+<!--            <version>${adk.version}</version>-->
+            <version>0.3.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.google.adk</groupId>

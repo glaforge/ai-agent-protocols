@@ -25,6 +25,11 @@ import com.google.adk.agents.SequentialAgent;
 import com.google.adk.tools.GoogleSearchTool;
 import com.google.adk.web.AdkWebServer;
 
+/**
+ * This agent organises the work among several subagents in parallel.
+ * The instructions contain the curly brace placeholders
+ * for the variables stored in the shared state.
+ */
 public class _34_CompanyDetective_Parallel implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

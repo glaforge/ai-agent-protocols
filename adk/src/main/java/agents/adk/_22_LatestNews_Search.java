@@ -24,6 +24,10 @@ import com.google.adk.web.AdkWebServer;
 
 import java.time.LocalDate;
 
+/**
+ * This news search agent uses a built-in tool: the Google Search tool.
+ * It allows answers to be grounded in the latest news, as found on Google Search.
+ */
 public class _22_LatestNews_Search implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

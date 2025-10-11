@@ -24,6 +24,25 @@ import com.google.adk.tools.GoogleSearchTool;
 import com.google.adk.web.AdkWebServer;
 import io.reactivex.rxjava3.core.Maybe;
 
+/**
+ * A more complex agent system for content creation and social media management.
+ * It demonstrates how to configure and use subagents.
+ *
+ * The system consists of multiple specialized subagents working together:
+ * <ul>
+ *   <li>Google Search Agent - Performs web searches to gather information</li>
+ *   <li>Topic Search Agent - Explores specific topics using the search agent</li>
+ *   <li>Social Media Agent - Crafts engaging social media posts</li>
+ *   <li>Content Companion - Orchestrates the workflow between all sub-agents</li>
+ * </ul>
+ *
+ * The main agent ("content-companion") features two subagents:
+ * "topic-search-agent" and "social-media-agent".
+ * And the "google-search-agent" is an "agent-as-tool" for the "topic-search-agent".
+ *
+ * The two subagents use a callback to always transfer back the
+ * control to the main agent when they have finished their task.
+ */
 public class _30_SearchAndTweet_SubAgents implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

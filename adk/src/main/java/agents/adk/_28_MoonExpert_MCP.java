@@ -22,16 +22,27 @@ import com.google.adk.agents.LlmAgent;
 import com.google.adk.tools.BaseTool;
 import com.google.adk.tools.mcp.McpToolset;
 import com.google.adk.tools.mcp.SseServerParameters;
+import com.google.adk.tools.mcp.StreamableHttpServerParameters;
 import com.google.adk.web.AdkWebServer;
 
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * This agent calls an MCP server.
+ * STDIO, Server-Sent Event, and Streamable HTTP MCP servers are supported.
+ */
 public class _28_MoonExpert_MCP implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
-        SseServerParameters params = SseServerParameters.builder()
-            .url("https://moonphases-1029513523185.europe-west1.run.app/mcp/sse")
+        // Server-Sent Events MCP server
+//        SseServerParameters params = SseServerParameters.builder()
+//            .url("https://moonphases-1029513523185.europe-west1.run.app/mcp/sse")
+//            .build();
+
+        // Streamable HTTP MCP server
+        StreamableHttpServerParameters params = StreamableHttpServerParameters.builder()
+            .url("https://mn-mcp-server-1029513523185.europe-west1.run.app/mcp")
             .build();
 
         try (McpToolset mcpToolset = new McpToolset(params)) {

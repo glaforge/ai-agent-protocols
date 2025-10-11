@@ -34,6 +34,15 @@ import java.util.Map;
 
 import static agents.util.AnsiMarkdown.*;
 
+/**
+ * The image editor agent uses the Nano Banana model to generate images.
+ * It can load an image from the file system and continue editing the image
+ * by storing it in the state of the agent.
+ *
+ * Callbacks are used to always append the image in each LLM request
+ * to save the new edited images back in the state after modification
+ * and display the image on the terminal or UI.
+ */
 public class _70_ImageEditor_NanoBanana implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

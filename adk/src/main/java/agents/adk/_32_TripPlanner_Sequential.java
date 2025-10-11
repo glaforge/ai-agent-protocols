@@ -24,6 +24,11 @@ import com.google.adk.agents.SequentialAgent;
 import com.google.adk.tools.GoogleSearchTool;
 import com.google.adk.web.AdkWebServer;
 
+/**
+ * A sequential workflow agent organizing the work of three agents in a row.
+ * Some of the agents use the Google Search built-in too.
+ * The agents define an output key, to store the result of their work into the shared state.
+ */
 public class _32_TripPlanner_Sequential implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

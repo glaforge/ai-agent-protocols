@@ -25,6 +25,11 @@ import com.google.genai.types.PrebuiltVoiceConfig;
 import com.google.genai.types.SpeechConfig;
 import com.google.genai.types.VoiceConfig;
 
+/**
+ * This second science teacher agent uses the "live" mode
+ * which lets users ask questions and hear the answers.
+ * It's using the Chirp 3 HD voices.
+ */
 public class _12_ScienceTeacher_Live implements AgentProvider {
     @Override
     public BaseAgent getAgent() {

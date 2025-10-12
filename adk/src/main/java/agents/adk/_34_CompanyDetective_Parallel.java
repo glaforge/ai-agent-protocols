@@ -98,7 +98,7 @@ public class _34_CompanyDetective_Parallel implements AgentProvider {
                 ## Financial Snapshot
                 {financials}
                 """)
-            .model("gemini-2.0-flash")
+            .model("gemini-2.5-flash")
             .build();
 
         return SequentialAgent.builder()

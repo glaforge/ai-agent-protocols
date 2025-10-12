@@ -36,14 +36,14 @@ public class _28_MoonExpert_MCP implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
         // Server-Sent Events MCP server
-//        SseServerParameters params = SseServerParameters.builder()
-//            .url("https://moonphases-1029513523185.europe-west1.run.app/mcp/sse")
-//            .build();
+        SseServerParameters params = SseServerParameters.builder()
+            .url("https://moonphases-1029513523185.europe-west1.run.app/mcp/sse")
+            .build();
 
         // Streamable HTTP MCP server
-        StreamableHttpServerParameters params = StreamableHttpServerParameters.builder()
-            .url("https://mn-mcp-server-1029513523185.europe-west1.run.app/mcp")
-            .build();
+//        StreamableHttpServerParameters params = StreamableHttpServerParameters.builder()
+//            .url("https://mn-mcp-server-1029513523185.europe-west1.run.app/mcp")
+//            .build();
 
         try (McpToolset mcpToolset = new McpToolset(params)) {
             List<BaseTool> moonPhasesTools =

@@ -11,20 +11,24 @@
     <properties>
         <adk.version>0.3.0</adk.version>
         <lc4j.version>1.7.1</lc4j.version>
+        <!-- when working with messages containing images -->
+        <org.apache.tomcat.websocket.DEFAULT_BUFFER_SIZE>10485760</org.apache.tomcat.websocket.DEFAULT_BUFFER_SIZE>
+        <!-- for long-running conversations -->
+        <spring.mvc.async.request-timeout>3600000</spring.mvc.async.request-timeout>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.google.adk</groupId>
             <artifactId>google-adk</artifactId>
-<!--            <version>${adk.version}</version>-->
-            <version>0.3.1-SNAPSHOT</version>
+            <version>${adk.version}</version>
+<!--            <version>0.3.1-SNAPSHOT</version>-->
         </dependency>
         <dependency>
             <groupId>com.google.adk</groupId>
             <artifactId>google-adk-dev</artifactId>
-<!--            <version>${adk.version}</version>-->
-            <version>0.3.1-SNAPSHOT</version>
+            <version>${adk.version}</version>
+<!--            <version>0.3.1-SNAPSHOT</version>-->
         </dependency>
 
         <dependency>

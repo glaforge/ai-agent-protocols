@@ -97,6 +97,10 @@ public class _32_TripPlanner_Sequential implements AgentProvider {
             "org.apache.tomcat.websocket.DEFAULT_BUFFER_SIZE",
             String.valueOf(10 * 1024 * 1024)
         );
+        System.setProperty(
+            "spring.mvc.async.request-timeout",
+            String.valueOf(60 * 60 * 1000)
+        )
 
         AdkWebServer.start(new _32_TripPlanner_Sequential().getAgent());
 //        AgentRunner.run(new _32_TripPlanner_Sequential().getAgent());

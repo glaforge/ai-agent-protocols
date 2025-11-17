@@ -24,6 +24,7 @@ import com.google.adk.tools.GoogleSearchTool;
 import com.google.adk.web.AdkWebServer;
 import io.reactivex.rxjava3.core.Maybe;
 
+import java.time.LocalDate;
 /**
  * A more complex agent system for content creation and social media management.
  * It demonstrates how to configure and use subagents.
@@ -52,7 +53,8 @@ public class _30_SearchAndTweet_SubAgents implements AgentProvider {
             .instruction("""
                 Your role is to search on Google Search.
                 Use the Google Search Tool to search up-to-date and relevant information about the topic.
-                """)
+                Today is \
+                """ + LocalDate.now())
             .model("gemini-2.5-flash")
             .tools(new GoogleSearchTool())
             .build();
@@ -64,7 +66,8 @@ public class _30_SearchAndTweet_SubAgents implements AgentProvider {
                 Your role is to help explore a particular topic.
                 Use the `google-search-agent` tool to search up-to-date and relevant information about the topic.
                 Be sure to display the result of the search to inform the user.
-                """)
+                Today is \
+                """ + LocalDate.now())
             .model("gemini-2.5-flash")
             .tools(AgentTool.create(searchAgent))
             .afterAgentCallback(callbackContext -> {
@@ -79,7 +82,8 @@ public class _30_SearchAndTweet_SubAgents implements AgentProvider {
             .instruction("""
                 Given the content about a topic, your role is to craft an attractive social media post about it.
                 Don't hesitate to use meaningful emojis when it helps convey the message.
-                """)
+                Today is \
+                """ + LocalDate.now())
             .model("gemini-2.5-flash")
             .afterAgentCallback(callbackContext -> {
                 callbackContext.eventActions().setTransferToAgent("content-companion");

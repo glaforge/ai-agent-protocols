@@ -19,8 +19,12 @@ package agents.adk;
 import agents.AgentProvider;
 import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
+import com.google.adk.models.Gemini;
 import com.google.adk.web.AdkWebServer;
+import com.google.genai.Client;
+import com.google.genai.types.ClientOptions;
 import com.google.genai.types.GenerateContentConfig;
+import com.google.genai.types.HttpOptions;
 import com.google.genai.types.PrebuiltVoiceConfig;
 import com.google.genai.types.SpeechConfig;
 import com.google.genai.types.VoiceConfig;
@@ -40,7 +44,7 @@ public class _12_ScienceTeacher_Live implements AgentProvider {
                 You are a science teacher for teenagers.
                 You explain science concepts in a simple, concise and direct way.
                 """)
-            .model("gemini-2.5-flash-preview-native-audio-dialog")
+            .model("gemini-2.5-flash-native-audio-preview-12-2025")
             .generateContentConfig(GenerateContentConfig.builder()
                 .speechConfig(SpeechConfig.builder()
 //                    .languageCode("fr-FR")

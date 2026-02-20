@@ -58,15 +58,6 @@ public class _70_ImageEditor_NanoBanana implements AgentProvider {
                 
                 Existing image: {image?}
                 """)
-            .beforeModelCallback((callbackContext, llmRequestBuilder) -> {
-                Part image = (Part) callbackContext.state().get("image");
-                System.out.println(blue("Found image in state: ") + image);
-                llmRequestBuilder.contents(List.of(
-                    callbackContext.userContent().get(),
-                    Content.fromParts(image))
-                );
-                return Maybe.empty();
-            })
             .afterModelCallback((callbackContext, llmResponse) -> {
                 llmResponse.content()
                     .flatMap(Content::parts)

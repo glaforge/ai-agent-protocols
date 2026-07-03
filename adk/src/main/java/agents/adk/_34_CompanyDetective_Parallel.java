@@ -41,7 +41,7 @@ public class _34_CompanyDetective_Parallel implements AgentProvider {
                 Include its mission, headquarters, and current CEO.
                 Use the Google Search Tool to find this information.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .tools(new GoogleSearchTool())
             .outputKey("profile")
             .build();
@@ -54,7 +54,7 @@ public class _34_CompanyDetective_Parallel implements AgentProvider {
                 Use the Google Search Tool.
                 Present the results as a simple bulleted list.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .tools(new GoogleSearchTool())
             .outputKey("news")
             .build();
@@ -67,7 +67,7 @@ public class _34_CompanyDetective_Parallel implements AgentProvider {
                 Focus on stock trends or recent earnings reports.
                 Use the Google Search Tool.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .tools(new GoogleSearchTool())
             .outputKey("financials")
             .build();
@@ -98,7 +98,7 @@ public class _34_CompanyDetective_Parallel implements AgentProvider {
                 ## Financial Snapshot
                 {financials}
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .build();
 
         return SequentialAgent.builder()

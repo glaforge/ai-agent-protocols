@@ -36,7 +36,7 @@ public class _24_PythonCoder implements AgentProvider {
                 You are a helpful Python developer that can implement algorithms in Python.
                 Use your built-in Python code execution capabilities to implement and execute Python code.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .tools(new BuiltInCodeExecutionTool())
             .build();
     }

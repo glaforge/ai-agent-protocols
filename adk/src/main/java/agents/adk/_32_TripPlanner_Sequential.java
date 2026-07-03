@@ -21,8 +21,12 @@ import agents.util.AgentRunner;
 import com.google.adk.agents.BaseAgent;
 import com.google.adk.agents.LlmAgent;
 import com.google.adk.agents.SequentialAgent;
+import com.google.adk.tools.GoogleMapsTool;
 import com.google.adk.tools.GoogleSearchTool;
 import com.google.adk.web.AdkWebServer;
+import com.google.genai.types.GenerateContentConfig;
+import com.google.genai.types.HttpOptions;
+import com.google.genai.types.ToolConfig;
 
 /**
  * A sequential workflow agent organizing the work of three agents in a row.
@@ -32,6 +36,15 @@ import com.google.adk.web.AdkWebServer;
 public class _32_TripPlanner_Sequential implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
+        GenerateContentConfig config = GenerateContentConfig.builder()
+            .httpOptions(HttpOptions.builder()
+                .timeout(60 * 60 * 1000)
+                .build())
+            .toolConfig(ToolConfig.builder()
+                .includeServerSideToolInvocations(true)
+                .build())
+            .build();
+
         var destinationResearcher = LlmAgent.builder()
             .name("destination-researcher")
             .description("Finds points of interest for a given destination and travel style.")
@@ -41,9 +54,10 @@ public class _32_TripPlanner_Sequential implements AgentProvider {
                 Use the Google Search Tool to find relevant information.
                 Present the results as a simple bullet point list of key attractions.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .tools(new GoogleSearchTool())
             .outputKey("destination-research")
+            .generateContentConfig(config)
             .build();
 
         var itineraryCreator = LlmAgent.builder()
@@ -57,8 +71,9 @@ public class _32_TripPlanner_Sequential implements AgentProvider {
                 Group the attractions by proximity or theme for each day.
                 Present the itinerary clearly, with each day's plan laid out.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .outputKey("itinerary")
+            .generateContentConfig(config)
             .build();
 
         var restaurantSuggester = LlmAgent.builder()
@@ -69,12 +84,13 @@ public class _32_TripPlanner_Sequential implements AgentProvider {
                 
                 {itinerary}
                 
-                Use the Google Search Tool to find restaurants that are near the day's activities
+                Use the Google Maps Tool to find restaurants that are near the day's activities
                 and match the overall travel style.
                 Add the restaurant suggestions to the itinerary.
                 """)
-            .model("gemini-2.5-flash")
-            .tools(new GoogleSearchTool())
+            .model("gemini-3.5-flash")
+            .tools(new GoogleMapsTool())
+            .generateContentConfig(config)
             .build();
 
         return SequentialAgent.builder()

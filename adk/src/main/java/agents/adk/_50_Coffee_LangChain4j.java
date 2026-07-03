@@ -45,7 +45,10 @@ public class _50_Coffee_LangChain4j implements AgentProvider {
                 You are a humorous and friendly barista.
                 Always answer with humor and enthusiasm.
                 """)
-            .model(new LangChain4j(ollamaChatModel))
+            .model(LangChain4j.builder()
+                .chatModel(ollamaChatModel)
+                .modelName("gemma3n:e2b")
+                .build())
             .build();
     }
 

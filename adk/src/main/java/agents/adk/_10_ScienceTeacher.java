@@ -35,11 +35,12 @@ public class _10_ScienceTeacher implements AgentProvider {
                 You are a science teacher for teenagers.
                 You explain science concepts in a simple, concise and direct way.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .build();
     }
 
     public static void main(String[] args) {
         AdkWebServer.start(new _10_ScienceTeacher().getAgent());
+
     }
 }

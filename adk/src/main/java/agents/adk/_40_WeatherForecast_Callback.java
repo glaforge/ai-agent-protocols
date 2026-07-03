@@ -28,7 +28,10 @@ import io.reactivex.rxjava3.core.Maybe;
 import java.time.LocalDate;
 import java.util.Map;
 
-import static agents.util.AnsiMarkdown.*;
+import static io.github.glaforge.ansiren.Ansi.blue;
+import static io.github.glaforge.ansiren.Ansi.bold;
+import static io.github.glaforge.ansiren.Ansi.green;
+import static io.github.glaforge.ansiren.Ansi.yellow;
 
 /**
  * The weather forecast agent exemplifies how to define the various possible callbacks.
@@ -44,7 +47,7 @@ public class _40_WeatherForecast_Callback implements AgentProvider {
                 You are an expert meteorologist.
                 When asked about the weather, call the `get_weather` tool.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .tools(FunctionTool.create(_40_WeatherForecast_Callback.class, "getWeather"))
 
             .beforeAgentCallback(callbackContext -> {

@@ -1,4 +1,4 @@
-package agents.adk.one;
+package agents.adk;
 
 import agents.AgentProvider;
 import com.google.adk.agents.BaseAgent;
@@ -8,7 +8,6 @@ import com.google.adk.models.Gemini;
 import com.google.adk.plugins.GlobalInstructionPlugin;
 import com.google.adk.plugins.LoggingPlugin;
 import com.google.adk.plugins.Plugin;
-import com.google.adk.runner.InMemoryRunner;
 import com.google.adk.runner.Runner;
 import com.google.adk.summarizer.EventsCompactionConfig;
 import com.google.adk.summarizer.LlmEventSummarizer;
@@ -16,15 +15,15 @@ import com.google.adk.web.AdkWebServer;
 
 import java.util.List;
 
-public class _20_AppAndPlugin implements AgentProvider {
+public class _80_AppAndPlugin implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
 
         LlmAgent assistant = LlmAgent.builder()
-                .name("helpful-assistant")
+                .name("80-helpful-assistant")
                 .description("A helpful assistant")
                 .instruction("You are a helpful and friendly assistant")
-                .model("gemini-2.5-flash")
+                .model("gemini-3.5-flash")
                 .build();
 
         // Define plugins
@@ -34,11 +33,11 @@ public class _20_AppAndPlugin implements AgentProvider {
         );
 
         String apiKey = System.getenv("GEMINI_API_KEY");
-        Gemini llm = new Gemini("gemini-2.5-flash-lite", apiKey);
+        Gemini llm = new Gemini("gemini-3.5-flash", apiKey);
 
         // Build the App
         App myApp = App.builder()
-                .name("customer-support-app")
+                .name("customer_support_app")
                 .rootAgent(assistant)
                 .plugins(plugins)
                 .eventsCompactionConfig(
@@ -63,6 +62,6 @@ public class _20_AppAndPlugin implements AgentProvider {
     }
 
     public static void main(String[] args) {
-        AdkWebServer.start(new _20_AppAndPlugin().getAgent());
+        AdkWebServer.start(new _80_AppAndPlugin().getAgent());
     }
 }

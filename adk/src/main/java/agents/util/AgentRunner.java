@@ -20,7 +20,12 @@ import java.util.Scanner;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static agents.util.AnsiMarkdown.*;
+import io.github.glaforge.ansiren.Ansi;
+import io.github.glaforge.ansiren.MarkdownRenderer;
+import static io.github.glaforge.ansiren.Ansi.bold;
+import static io.github.glaforge.ansiren.Ansi.green;
+import static io.github.glaforge.ansiren.Ansi.yellow;
+import static io.github.glaforge.ansiren.Ansi.red;
 
 public class AgentRunner {
 
@@ -80,7 +85,7 @@ public class AgentRunner {
                 System.out.println(bold("Saving artifact: ") + green(key));
                 runner.artifactService().saveArtifact(appName, userId, session.id(), key, (Part) objectPart)
                     .subscribe((integer, throwable) -> {
-                        System.out.println(gray("  " + integer + "/" + throwable));
+                        System.out.println(Ansi.ready().brightBlack().append("  " + integer + "/" + throwable).reset().toString());
                     });
             });
         }
@@ -114,7 +119,7 @@ public class AgentRunner {
                                 System.out.println();
                                 parts.forEach(part -> {
                                     System.out.print(
-                                        markdown(part.text().orElseGet(() -> ""))
+                                        new MarkdownRenderer().render(part.text().orElseGet(() -> ""))
                                     );
                                 });
                             });

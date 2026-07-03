@@ -6,11 +6,11 @@ import com.google.adk.agents.LlmAgent;
 import com.google.adk.tools.UrlContextTool;
 import com.google.adk.web.AdkWebServer;
 
-public class _11_UrlContextGrounding implements AgentProvider {
+public class _23_UrlContextGrounding implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
         return LlmAgent.builder()
-                .name("url-summarizer")
+                .name("23-url-summarizer")
                 .description("Summarize the content of a URL")
                 .instruction("""
                         A precise word smith
@@ -18,12 +18,12 @@ public class _11_UrlContextGrounding implements AgentProvider {
                         to summarize the content of a URL
                         given by the user.
                         """)
-                .model("gemini-2.5-flash")
+                .model("gemini-3.5-flash")
                 .tools(new UrlContextTool())
                 .build();
     }
 
     public static void main(String[] args) {
-        AdkWebServer.start(new _11_UrlContextGrounding().getAgent());
+        AdkWebServer.start(new _23_UrlContextGrounding().getAgent());
     }
 }

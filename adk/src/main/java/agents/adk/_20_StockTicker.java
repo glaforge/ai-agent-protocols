@@ -45,7 +45,7 @@ public class _20_StockTicker implements AgentProvider {
                 When asked about the stock price of a company,
                 use the `lookup_stock_ticker` tool to find the information.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .tools(FunctionTool.create(_20_StockTicker.class, "lookupStockTicker"))
             .build();
     }

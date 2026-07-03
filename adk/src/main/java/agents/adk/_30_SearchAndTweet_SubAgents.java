@@ -22,6 +22,8 @@ import com.google.adk.agents.LlmAgent;
 import com.google.adk.tools.AgentTool;
 import com.google.adk.tools.GoogleSearchTool;
 import com.google.adk.web.AdkWebServer;
+import com.google.genai.types.GenerateContentConfig;
+import com.google.genai.types.ToolConfig;
 import io.reactivex.rxjava3.core.Maybe;
 
 import java.time.LocalDate;
@@ -47,29 +49,22 @@ import java.time.LocalDate;
 public class _30_SearchAndTweet_SubAgents implements AgentProvider {
     @Override
     public BaseAgent getAgent() {
-        LlmAgent searchAgent = LlmAgent.builder()
-            .name("google-search-agent")
-            .description("An agent that searches on Google Search")
-            .instruction("""
-                Your role is to search on Google Search.
-                Use the Google Search Tool to search up-to-date and relevant information about the topic.
-                Today is \
-                """ + LocalDate.now())
-            .model("gemini-2.5-flash")
-            .tools(new GoogleSearchTool())
-            .build();
-
         LlmAgent topicSearchAgent = LlmAgent.builder()
             .name("topic-search-agent")
             .description("An agent that searches and dives in particular topics")
             .instruction("""
                 Your role is to help explore a particular topic.
-                Use the `google-search-agent` tool to search up-to-date and relevant information about the topic.
+                Use the `google-search` tool to search up-to-date and relevant information about the topic.
                 Be sure to display the result of the search to inform the user.
                 Today is \
                 """ + LocalDate.now())
-            .model("gemini-2.5-flash")
-            .tools(AgentTool.create(searchAgent))
+            .model("gemini-3.5-flash")
+            .tools(new GoogleSearchTool())
+            .generateContentConfig(GenerateContentConfig.builder()
+                .toolConfig(ToolConfig.builder()
+                    .includeServerSideToolInvocations(true)
+                    .build())
+                .build())
             .afterAgentCallback(callbackContext -> {
                 callbackContext.eventActions().setTransferToAgent("content-companion");
                 return Maybe.empty();
@@ -84,7 +79,7 @@ public class _30_SearchAndTweet_SubAgents implements AgentProvider {
                 Don't hesitate to use meaningful emojis when it helps convey the message.
                 Today is \
                 """ + LocalDate.now())
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .afterAgentCallback(callbackContext -> {
                 callbackContext.eventActions().setTransferToAgent("content-companion");
                 return Maybe.empty();
@@ -105,7 +100,7 @@ public class _30_SearchAndTweet_SubAgents implements AgentProvider {
                 Don't write social media posts yourself:
                 Use the `social-media-agent` to craft a social media post about the topic.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .subAgents(socialMediaAgent, topicSearchAgent)
             .build();
     }

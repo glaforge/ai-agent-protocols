@@ -51,7 +51,7 @@ public class _28_MoonExpert_MCP implements AgentProvider {
 
             return LlmAgent.builder()
                 .name("28-moon-expert")
-                .model("gemini-2.5-flash")
+                .model("gemini-3.5-flash")
                 .description("a moon expert")
                 .instruction("""
                     You are a knowledgeable astronomy expert

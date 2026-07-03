@@ -11,22 +11,25 @@ import java.util.function.Consumer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.adk.tools.Annotations.Schema;
-import io.a2a.A2A;
+import org.a2aproject.sdk.A2A;
 
-import io.a2a.client.Client;
-import io.a2a.client.ClientEvent;
-import io.a2a.client.MessageEvent;
-import io.a2a.client.http.A2ACardResolver;
-import io.a2a.client.transport.jsonrpc.JSONRPCTransport;
-import io.a2a.client.transport.jsonrpc.JSONRPCTransportConfig;
-import io.a2a.spec.A2AClientError;
-import io.a2a.spec.A2AClientException;
-import io.a2a.spec.AgentCard;
-import io.a2a.spec.Message;
-import io.a2a.spec.Part;
-import io.a2a.spec.TextPart;
+import org.a2aproject.sdk.client.Client;
+import org.a2aproject.sdk.client.ClientEvent;
+import org.a2aproject.sdk.client.MessageEvent;
+import org.a2aproject.sdk.client.http.A2ACardResolver;
+import org.a2aproject.sdk.client.http.A2AHttpClientFactory;
+import org.a2aproject.sdk.client.transport.jsonrpc.JSONRPCTransport;
+import org.a2aproject.sdk.client.transport.jsonrpc.JSONRPCTransportConfig;
+import org.a2aproject.sdk.spec.A2AClientError;
+import org.a2aproject.sdk.spec.A2AClientException;
+import org.a2aproject.sdk.spec.AgentCard;
+import org.a2aproject.sdk.spec.Message;
+import org.a2aproject.sdk.spec.Part;
+import org.a2aproject.sdk.spec.TextPart;
 
-import static agents.util.AnsiMarkdown.*;
+import static io.github.glaforge.ansiren.Ansi.bold;
+import static io.github.glaforge.ansiren.Ansi.green;
+import io.github.glaforge.ansiren.Ansi;
 
 public class SocialMediaClient {
 
@@ -40,10 +43,14 @@ public class SocialMediaClient {
         String textContent) {
         try {
 
-            AgentCard publicAgentCard = new A2ACardResolver(SERVER_URL).getAgentCard();
+            AgentCard publicAgentCard = A2ACardResolver.builder()
+                .httpClient(A2AHttpClientFactory.create())
+                .baseUrl(SERVER_URL)
+                .build()
+                .getAgentCard();
 
             System.out.println(bold("\nAgent card:"));
-            System.out.println(gray(OBJECT_MAPPER.writeValueAsString(publicAgentCard)));
+            System.out.println(Ansi.ready().brightBlack().append(OBJECT_MAPPER.writeValueAsString(publicAgentCard)).reset().toString());
 
             final CompletableFuture<String> messageResponse = new CompletableFuture<>();
 
@@ -53,10 +60,10 @@ public class SocialMediaClient {
                 if (event instanceof MessageEvent messageEvent) {
                     Message responseMessage = messageEvent.getMessage();
                     StringBuilder textBuilder = new StringBuilder();
-                    if (responseMessage.getParts() != null) {
-                        for (Part<?> part : responseMessage.getParts()) {
+                    if (responseMessage.parts() != null) {
+                        for (Part<?> part : responseMessage.parts()) {
                             if (part instanceof TextPart textPart) {
-                                textBuilder.append(textPart.getText());
+                                textBuilder.append(textPart.text());
                             }
                         }
                     }

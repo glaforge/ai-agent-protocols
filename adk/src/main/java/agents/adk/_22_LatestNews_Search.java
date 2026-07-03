@@ -40,7 +40,7 @@ public class _22_LatestNews_Search implements AgentProvider {
                 when asked to search for recent events and information.
                 Today is \
                 """ + LocalDate.now())
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .tools(new GoogleSearchTool())
             .build();
     }

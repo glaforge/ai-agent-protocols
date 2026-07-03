@@ -48,7 +48,7 @@ public class _36_CodeRefiner_Loop_Exit implements AgentProvider {
                 Previous feedback (if any):
                 {feedback?}
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .outputKey("generated_code")
             .build();
 
@@ -67,7 +67,7 @@ public class _36_CodeRefiner_Loop_Exit implements AgentProvider {
                 
                 Otherwise, provide constructive feedback for the `code-generator to improve the code.
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .outputKey("feedback")
             .tools(ExitLoopTool.INSTANCE)
             .build();
@@ -93,7 +93,7 @@ public class _36_CodeRefiner_Loop_Exit implements AgentProvider {
                 Final Code:
                 {generated_code}
                 """)
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .build();
 
         return SequentialAgent.builder()

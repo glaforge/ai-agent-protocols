@@ -14,9 +14,15 @@ The repository is organized into three main sub-projects:
 
 ### 1. [`adk/`](./adk/README.md)
 
-This directory contains a comprehensive collection of agent examples built with the Google ADK. It demonstrates a wide range of features, from basic agents and tool usage to advanced multi-agent collaboration patterns (sequential, parallel, and loops).
+This directory contains a comprehensive collection of agent examples built with the Google ADK. It demonstrates a wide range of features:
 
-➡️ **See the ADK README for a detailed list of all agent examples.**
+*   **Master Launcher**: Run all examples concurrently via [`_00_AllAgents.java`](./adk/src/main/java/agents/adk/_00_AllAgents.java).
+*   **Basic Agents**: Simple persona chatbots ([`_10_ScienceTeacher.java`](./adk/src/main/java/agents/adk/_10_ScienceTeacher.java)) and voice/audio agents ([`_12_ScienceTeacher_Live.java`](./adk/src/main/java/agents/adk/_12_ScienceTeacher_Live.java)).
+*   **Agents with Tools**: Stock lookup ([`_20_StockTicker.java`](./adk/src/main/java/agents/adk/_20_StockTicker.java)), web search ([`_22_LatestNews_Search.java`](./adk/src/main/java/agents/adk/_22_LatestNews_Search.java)), URL summarization ([`_23_UrlContextGrounding.java`](./adk/src/main/java/agents/adk/_23_UrlContextGrounding.java)), Python execution ([`_24_PythonCoder.java`](./adk/src/main/java/agents/adk/_24_PythonCoder.java)), Maps lookup ([`_26_LocalGuide_Maps.java`](./adk/src/main/java/agents/adk/_26_LocalGuide_Maps.java)), and remote MCP tools ([`_28_MoonExpert_MCP.java`](./adk/src/main/java/agents/adk/_28_MoonExpert_MCP.java)).
+*   **Multi-Agent Collaboration**: Sub-agents ([`_30_SearchAndTweet_SubAgents.java`](./adk/src/main/java/agents/adk/_30_SearchAndTweet_SubAgents.java)), sequential pipelines ([`_32_TripPlanner_Sequential.java`](./adk/src/main/java/agents/adk/_32_TripPlanner_Sequential.java)), parallel execution ([`_34_CompanyDetective_Parallel.java`](./adk/src/main/java/agents/adk/_34_CompanyDetective_Parallel.java)), and loops ([`_36_CodeRefiner_Loop_Exit.java`](./adk/src/main/java/agents/adk/_36_CodeRefiner_Loop_Exit.java)).
+*   **Advanced Features**: Human-in-the-loop confirmation ([`_38_HITL.java`](./adk/src/main/java/agents/adk/_38_HITL.java)), lifecycle callbacks ([`_40_WeatherForecast_Callback.java`](./adk/src/main/java/agents/adk/_40_WeatherForecast_Callback.java)), LangChain4j integration ([`_50_Coffee_LangChain4j.java`](./adk/src/main/java/agents/adk/_50_Coffee_LangChain4j.java)), YAML configurations ([`_60_CapitalCity_YAML.java`](./adk/src/main/java/agents/adk/_60_CapitalCity_YAML.java)), image editing ([`_70_ImageEditor_NanoBanana.java`](./adk/src/main/java/agents/adk/_70_ImageEditor_NanoBanana.java)), and App config/plugins ([`_80_AppAndPlugin.java`](./adk/src/main/java/agents/adk/_80_AppAndPlugin.java)).
+
+➡️ **See the [ADK README](./adk/README.md) for a detailed list and explanation of all agent examples.**
 
 ### 2. `quarkus-db-store-mcp/`
 

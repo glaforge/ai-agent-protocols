@@ -21,7 +21,7 @@ public class MediaCreative implements AgentProvider {
     public BaseAgent getAgent() {
         return LlmAgent.builder()
             .name("media_creative")
-            .model("gemini-2.5-flash-image-preview") // Nano Banana 🍌
+            .model("gemini-3.1-flash-image") // Nano Banana 2 🍌
             .description("media creative agent")
             .instruction("""
                 Generate a detailed and high-quality photography, in 3:4 aspect ratio, described in the brief below.

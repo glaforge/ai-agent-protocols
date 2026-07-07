@@ -28,7 +28,7 @@ public class MarketingSpecialist implements AgentProvider {
     public BaseAgent getAgent() {
         return LlmAgent.builder()
             .name("marketing_product_strategist")
-            .model("gemini-2.5-flash")
+            .model("gemini-3.5-flash")
             .description("marketing product strategist")
             .instruction("""
                 You are a marketing product strategist.

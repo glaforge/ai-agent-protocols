@@ -21,7 +21,7 @@ public class ProductStrategist implements AgentProvider {
 
             return LlmAgent.builder()
                 .name("product_strategist")
-                .model("gemini-2.5-flash")
+                .model("gemini-3.5-flash")
                 .description("product strategist")
                 .instruction("""
                     As a world-class Marketing Product Strategist, your mission is to conceptualize innovative products
